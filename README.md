@@ -1,3 +1,9 @@
+# LOTTERY CONTRACT DETAILS
+
+Deployer's wallet address: **0x4FAC925B7279Ad39dc4340a5158dfd049f43eD10**
+
+Lottery contract deployed at [https://sepolia.etherscan.io/address/0xdaD7677997871308ab84E22C93A6231cAe0B67f3](https://sepolia.etherscan.io/address/0xdaD7677997871308ab84E22C93A6231cAe0B67f3)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
