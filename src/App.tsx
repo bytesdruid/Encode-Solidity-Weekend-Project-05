@@ -1,11 +1,11 @@
 import React from 'react';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig, useSigner } from 'wagmi';
+import { configureChains, createClient, WagmiConfig, useAccount } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
 import { infuraProvider } from 'wagmi/providers/infura';
 import { Connect }  from './components/Connect';
-import { OpenBet } from './components/OpenBet';
-import { CloseBet } from './components/CloseBet';
+import { BetTimer } from './components/BetTimer';
+import { BetStatus } from './components/BetStatus';
 import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -29,22 +29,30 @@ const wagmiClient = createClient({
 })
 
 const App = () => {
+  const deployer = "0x4FAC925B7279Ad39dc4340a5158dfd049f43eD10";
+  const { address, isConnected } = useAccount()
   return (
     <Container maxWidth="xl">
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <Connect />
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <OpenBet />
+        {!isConnected ? 
+        <p>Please <strong>Connect Wallet</strong> to Play</p> : 
+        (
+          <Grid container spacing={1}>
+            {!(address == deployer) ? null : (
+              <Grid item xs={12}>
+                <BetStatus />
+              </Grid>
+            )}
+            <Grid item xs={12} lg={6}>
+              <BetTimer />
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <BetTimer />
+            </Grid>
           </Grid>
-          <Grid item xs={12} lg={6}>
-            <CloseBet />
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <CloseBet />
-          </Grid>
-        </Grid>
+        )}
       </RainbowKitProvider>
     </WagmiConfig>
     </Container>
