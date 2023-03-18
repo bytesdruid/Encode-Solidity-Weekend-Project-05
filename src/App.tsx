@@ -1,18 +1,13 @@
-import React from 'react';
+import { Connect, BetTimer, BetStatus, BalanceDisplay, BuyTokens  } from './components/Components'
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig, useAccount } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
 import { infuraProvider } from 'wagmi/providers/infura';
-import { Connect }  from './components/Connect';
-import { BetTimer } from './components/BetTimer';
-import { BetStatus } from './components/BetStatus';
-import { BalanceDisplay } from './components/BalanceDisplay';
-import { BuyTokens } from './components/BuyTokens';
 import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
-import Box from '@mui/material/Box';
 import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
+
 
 const { chains, provider } = configureChains(
   [sepolia],
