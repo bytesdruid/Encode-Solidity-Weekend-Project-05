@@ -9,8 +9,8 @@ export const BuyTokens = () => {
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
-                    <Typography variant="body1">
-                    <center>PLACEHOLDER - BUY TOKENS</center>
+                <Typography component={'span'} variant={'body1'} align={'center'}>
+                    PLACEHOLDER - BUY TOKENS
                     </Typography>
                 </CardContent>
             </Card>

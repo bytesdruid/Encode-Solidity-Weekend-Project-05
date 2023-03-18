@@ -51,10 +51,10 @@ const App = () => {
               </Grid>
             )}
             <Grid item xs={12} lg={6}>
-              <BalanceDisplay />
+              <BuyTokens />
             </Grid>
             <Grid item xs={12} lg={6}>
-              <BuyTokens />
+            <BalanceDisplay />
             </Grid>
           </Grid>
         )}

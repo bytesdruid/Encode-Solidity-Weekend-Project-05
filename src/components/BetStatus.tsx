@@ -9,8 +9,8 @@ export const BetStatus = () => {
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
-                    <Typography variant="body1">
-                    <center>PLACEHOLDER - BET STATUS HERE - ONLY "ADMIN" CAN SEE IT</center>
+                    <Typography component={'span'} variant={'body1'} align={'center'}>
+                        PLACEHOLDER - BET STATUS HERE - ONLY "ADMIN" CAN SEE IT
                     </Typography>
                 </CardContent>
             </Card>

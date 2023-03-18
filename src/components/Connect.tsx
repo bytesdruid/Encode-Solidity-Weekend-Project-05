@@ -3,8 +3,6 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useSigner } from 'wagmi'
 
 export const Connect = () => {
-  const { data: signer, isError, isLoading } = useSigner()
-  console.log(`address: ${signer?.getAddress()}`);
   return (
     <div
       style={{

@@ -9,8 +9,8 @@ export const BetTimer = () => {
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
-                    <Typography variant="body1">
-                    <center>PLACEHOLDER - TIMER HERE</center>
+                <Typography component={'span'} variant={'body1'} align={'center'}>
+                    PLACEHOLDER - TIMER HERE
                     </Typography>
                 </CardContent>
             </Card>
