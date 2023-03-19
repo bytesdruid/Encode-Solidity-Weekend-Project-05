@@ -9,7 +9,8 @@ import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 export const ReturnTokens = () => {
     const [amount, setAmount] = React.useState("0")
     const { address, isConnected, isDisconnected } = useAccount()
-    const BnAmount = ethers.utils.parseEther(amount)
+    const BnAmount = ethers.utils.parseUnits(amount, 0)
+    const formatAmount = ethers.utils.formatEther(BnAmount, )
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: [
@@ -38,6 +39,7 @@ export const ReturnTokens = () => {
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
                             {<div>{amount}</div>}
+                            {<div>{`${BnAmount}`}</div>}
                         </div>
                         <div>
                             <input
