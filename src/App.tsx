@@ -58,6 +58,10 @@ const App = () => {
                 <BetStatus />
               </Grid>
             )}
+            Token contract state variables.
+            <Grid item xs={12} lg={12}>
+              <BalanceDisplay />
+            </Grid>
             Lottery contract state variables.
             <Grid item xs={12} lg={12}>
               <BetsOpen />
@@ -68,10 +72,6 @@ const App = () => {
               <PrizePool />
               <OwnerPool />
               <BetsClosingTime />
-            </Grid>
-            Token contract state variables.
-            <Grid item xs={12} lg={12}>
-              <BalanceDisplay />
             </Grid>
             Lottery contract methods.
             <Grid item xs={12} lg={12}>
