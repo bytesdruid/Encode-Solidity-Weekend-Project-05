@@ -9,13 +9,15 @@ import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { ethers} from 'ethers';
+import { ethers, utils} from 'ethers';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_TOKEN_ADDRESS } from "../constants/contracts";
+import { metisGoerli } from 'wagmi/dist/chains';
 
 export const TokenAllowance = () => {
-    const [closingTime, setClosingTime] = React.useState("0")
-    const closingTimeNumber = ethers.utils.parseEther(closingTime)
+    const [spender, setSpender] = React.useState("")
     const { address, isConnected, isDisconnected } = useAccount()
+    const spenderHard = "0x4FAC925B7279Ad39dc4340a5158dfd049f43eD10"
+    const owner = "0x4FAC925B7279Ad39dc4340a5158dfd049f43eD10"
     const { config } = usePrepareContractWrite({
         address: LOTTERY_TOKEN_ADDRESS,
         abi: [
@@ -28,7 +30,7 @@ export const TokenAllowance = () => {
             },
         ],
         functionName: 'allowance',
-        args: [closingTimeNumber],
+        args: [owner, spenderHard],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
@@ -39,17 +41,17 @@ export const TokenAllowance = () => {
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
-                                Open Bets
+                                Allow Tokens
                             </button>
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
                         </div>
                         <div>
                             <input
-                                id="closingBlockNumber"
-                                onChange={(e) => setClosingTime(e.target.value)}
-                                placeholder="Closing block number."
-                                value={closingTime}
+                                id="spender"
+                                onChange={(e) => setSpender(e.target.value)}
+                                placeholder="Address to allow."
+                                value={spender}
                             />
                         </div>
                     </Typography>
