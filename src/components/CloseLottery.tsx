@@ -4,14 +4,18 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
+
 export const CloseLottery = () => {
-    const { address, isConnected, isDisconnected } = useAccount()
+    const { isConnected } = useAccount()
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: LOTTERY_ABI,
         functionName: 'closeLottery',
+        onError(error) {
+            console.log('Error', error)
+          },
     })
-    const { data, isLoading, isSuccess, write } = useContractWrite(config)
+    let { data, isLoading, isSuccess, write } = useContractWrite(config)
       
     if (isConnected) {
         return (

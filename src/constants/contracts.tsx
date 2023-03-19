@@ -1,8 +1,8 @@
 import lotteryJson from '../assets/Lottery.json';
 import lotteryTokenJson from '../assets/LotteryToken.json';
 
-const LOTTERY_CONTRACT_ADDRESS = '0x89f957389784DbB036d9F32F3358cd32B22F9ac8';
-const LOTTERY_TOKEN_ADDRESS = "0x8018f4655a87a7be462b72dcb967e67fff515a52";
+const LOTTERY_CONTRACT_ADDRESS = '0x4c5Ec2E9a3fC3eedE1DA4189B0f0db74eCeB7695';
+const LOTTERY_TOKEN_ADDRESS = "0xca25D30F1f2f01Be696AFC5ADA4fbe9FFAea3755";
 
 const LOTTERY_ABI = lotteryJson.abi;
 const LOTTERY_TOKEN_ABI = lotteryTokenJson.abi;

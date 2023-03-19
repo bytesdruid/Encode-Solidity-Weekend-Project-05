@@ -5,6 +5,7 @@ import {
   Bet,  
   OpenBets,
   CloseLottery,
+  BetTimer,
   ReturnTokens
 } from './components/ExportComponents';
 import {
@@ -59,6 +60,9 @@ const App = () => {
             Token contract state variables.
             <Grid item xs={12} lg={12}>
               <UserBalanceDisplay />
+            </Grid>
+            <Grid item xs={12} lg={12}>
+              <BetTimer />
             </Grid>
             Lottery contract state variables.
             <Grid item xs={12} lg={12}>

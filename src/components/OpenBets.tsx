@@ -3,12 +3,12 @@ import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { ethers} from 'ethers';
+import { ethers, BigNumber} from 'ethers';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
 export const OpenBets = () => {
     const [closingTime, setClosingTime] = React.useState("0")
-    const closingTimeNumber = ethers.utils.parseEther(closingTime)
+    const closingTimeNumber = BigNumber.from(closingTime)
     const { address, isConnected, isDisconnected } = useAccount()
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
