@@ -9,7 +9,6 @@ import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 export const OpenBets = () => {
     const [closingTime, setClosingTime] = React.useState("0")
     const closingTimeNumber = ethers.utils.parseEther(closingTime)
-    // const closingTimeConversion = closingTimeNumber.div(1000000000000000000)
     const { address, isConnected, isDisconnected } = useAccount()
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
