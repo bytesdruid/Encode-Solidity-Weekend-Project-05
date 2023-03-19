@@ -8,9 +8,9 @@ import lotteryJson from '../assets/Lottery.json';
 export const BuyTokens = () => {
     const { address, isConnected, isDisconnected } = useAccount()
     const { config } = usePrepareContractWrite({
-    address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
-    abi: lotteryJson.abi,
-    functionName: 'purchaseTokens',
+        address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
+        abi: lotteryJson.abi,
+        functionName: 'purchaseTokens',
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
