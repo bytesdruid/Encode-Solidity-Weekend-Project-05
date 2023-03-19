@@ -1,4 +1,4 @@
-import { useAccount } from 'wagmi'
+import { useAccount, usePrepareSendTransaction, useSendTransaction } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -11,6 +11,8 @@ export const BuyTokens = () => {
                 <CardContent>
                 <Typography component={'span'} variant={'body1'} align={'center'}>
                     PLACEHOLDER - BUY TOKENS
+                    // usePrepareSendTransaction
+                    // useSendTransaction
                     </Typography>
                 </CardContent>
             </Card>
