@@ -2,7 +2,7 @@ import { useAccount, useContract, usePrepareContractWrite, useContractWrite } fr
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { BigNumber, providers, Signer } from 'ethers';
+import { BigNumber, ethers, providers, Signer } from 'ethers';
 import lotteryJson from '../assets/Lottery.json';
 
 export const BuyTokens = () => {
@@ -11,6 +11,7 @@ export const BuyTokens = () => {
         address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
         abi: lotteryJson.abi,
         functionName: 'purchaseTokens',
+        args: [{value: ethers.utils.parseEther(".003")}],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
