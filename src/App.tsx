@@ -12,6 +12,7 @@ import { OpenBets } from './components/OpenBets';
 import { CloseLottery } from './components/CloseLottery';
 import { Bet } from './components/Bet';
 import { PaymentToken } from './components/stateVarReads/PaymentToken';
+import { PurchaseRatio } from './components/stateVarReads/PurchaseRatio';
 
 
 const { chains, provider } = configureChains(
@@ -50,11 +51,13 @@ const App = () => {
                 <BetStatus />
               </Grid>
             )}
+            Lotter contract state variables.
             <Grid item xs={12} lg={12}>
-              Lotter contract state variables.
               <BetsOpen />
               <PaymentToken />
+              {/* <PurchaseRatio />  REMOVE COMMENTS ONCE SET IN CONSTRUCTOR OF NEW DEPLOYMENT */}
             </Grid>
+            Lottery contract methods.
             <Grid item xs={12} lg={12}>
               <BuyTokens />
             </Grid>

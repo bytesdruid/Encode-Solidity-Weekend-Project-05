@@ -17,7 +17,6 @@ export const PaymentToken = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        PaymentToken Component - Displays the address of the payment token.
                         {!isError && <div>Betting token address: {JSON.stringify(data)}</div>}
                     </Typography>
                 </CardContent>
