@@ -21,7 +21,7 @@ export const UserBalanceDisplay = () => {
                 <Card sx={{ minWidth: 275 }}>
                     <CardContent>
                         <Typography component={'span'} variant={'body1'} align="center">
-                            Balance: <strong>{data?.formatted} {data?.symbol}</strong>
+                            User Balance: <strong>{data?.formatted} {data?.symbol}</strong>
                         </Typography>
                     </CardContent>
                 </Card>
