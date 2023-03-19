@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
-export const OwnerWithdraw = () => {
+export const PrizeWithdraw = () => {
     const [amount, setAmount] = React.useState("0")
     const { address, isConnected, isDisconnected } = useAccount()
     const BnAmount = ethers.BigNumber.from(amount)
@@ -14,14 +14,14 @@ export const OwnerWithdraw = () => {
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: [
             {
-              name: 'ownerWithdraw',
+              name: 'prizeWithdraw',
               type: 'function',
               stateMutability: 'nonpayable',
               inputs: [{ internalType: 'uint256', name: 'amount', type: 'uint256' }],
               outputs: [],
             },
         ],
-        functionName: 'ownerWithdraw',
+        functionName: 'prizeWithdraw',
         args: [BnAmount],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)

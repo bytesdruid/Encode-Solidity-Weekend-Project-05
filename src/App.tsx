@@ -27,7 +27,7 @@ import { Grid } from '@mui/material';
 import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
 import { PrizeWithdraw } from './components/PrizeWithdraw';
-import { OwnerWithdraw } from './components/PrizeWithdraw copy';
+import { OwnerWithdraw } from './components/OwnerWithdraw';
 
 const { chains, provider } = configureChains(
   [sepolia],
