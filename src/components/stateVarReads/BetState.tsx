@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { BigNumber, providers, Signer } from 'ethers';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../../constants/contracts";
 
-export const BetsOpen = () => {
+export const BetState = () => {
     const { address, isConnected, isDisconnected } = useAccount()
     const { data, isError, isLoading } = useContractRead({
         address: LOTTERY_CONTRACT_ADDRESS,
@@ -13,12 +13,13 @@ export const BetsOpen = () => {
         functionName: 'betsOpen',
       })
       
-    if (isConnected) {
+    if (isConnected && !isError) {
+        const betState = data?.toString() == "true" ? "OPEN" : "CLOSED";
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        {!isError && <div>Betting is currently open: {JSON.stringify(data)}</div>}
+                        <div>Betting is currently <strong>{betState}</strong></div>
                     </Typography>
                 </CardContent>
             </Card>

@@ -9,7 +9,7 @@ import {
   ReturnTokens
 } from './components/ExportComponents';
 import {
-  BetsOpen,
+  BetState,
   PaymentToken,
   PurchaseRatio,
   BetPrice,
@@ -65,7 +65,7 @@ const App = () => {
             </Grid>
             Lottery contract state variables.
             <Grid item xs={12} lg={12}>
-              <BetsOpen />
+              <BetState />
               <PaymentToken />
               <PurchaseRatio />
               <BetPrice />
