@@ -33,7 +33,7 @@ export const PrizeWithdraw = () => {
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
-                                Return Tokens
+                                Prize Withdraw
                             </button>
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
@@ -42,7 +42,7 @@ export const PrizeWithdraw = () => {
                             <input
                                 id="amount"
                                 onChange={(e) => setAmount(e.target.value)}
-                                placeholder="Amount of tokens to withdraw."
+                                placeholder="Amount of prize to withdraw."
                                 value={amount}
                             />
                         </div>
