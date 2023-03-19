@@ -32,7 +32,6 @@ export const OpenBets = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        OpenBets Component - Opens the betting.
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
                                 Open Bets

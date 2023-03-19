@@ -1,16 +1,22 @@
 import React from 'react';
-import { ethers } from 'ethers';
+import { BigNumber, ethers } from 'ethers';
 import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
+    // SOLIDITY IMPLEMENTATION
+    // /// @notice Burns `amount` tokens and give the equivalent ETH back to user
+    // function returnTokens(uint256 amount) external {
+    //     paymentToken.burnFrom(msg.sender, amount);
+    //     payable(msg.sender).transfer(amount / purchaseRatio);
+    // }
+
 export const ReturnTokens = () => {
     const [amount, setAmount] = React.useState("0")
     const { address, isConnected, isDisconnected } = useAccount()
-    // const formatAmount = parseBytes32String(amount)
-    const formatEtherAmount = ethers.utils.parseEther(amount)
+    const BnAmount = ethers.BigNumber.from(amount)
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: [
@@ -23,7 +29,7 @@ export const ReturnTokens = () => {
             },
         ],
         functionName: 'returnTokens',
-        args: [formatEtherAmount],
+        args: [BnAmount],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
@@ -32,7 +38,6 @@ export const ReturnTokens = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        ReturnTokens Component - Burn tokens and get ether back.
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
                                 Return Tokens

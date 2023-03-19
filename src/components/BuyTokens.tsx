@@ -25,7 +25,6 @@ export const BuyTokens = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        BuyTokens Component - Purchase tokens for betting rights.
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
                                 Purchase Tokens

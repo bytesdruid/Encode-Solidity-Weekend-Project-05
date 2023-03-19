@@ -18,7 +18,6 @@ export const Bet = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        Bet Component - Submits a bet using the constructor bet price and bet fee.
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
                                 Bet
