@@ -9,6 +9,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
 import { BetsOpen } from './components/BetsOpen';
 import { OpenBets } from './components/OpenBets';
+import { CloseLottery } from './components/CloseLottery';
 
 
 const { chains, provider } = configureChains(
@@ -58,6 +59,9 @@ const App = () => {
             </Grid>
             <Grid item xs={12} lg={6}>
               <OpenBets />
+            </Grid>
+            <Grid item xs={12} lg={6}>
+              <CloseLottery />
             </Grid>
           </Grid>
         )}
