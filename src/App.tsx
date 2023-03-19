@@ -13,6 +13,7 @@ import { CloseLottery } from './components/CloseLottery';
 import { Bet } from './components/Bet';
 import { PaymentToken } from './components/stateVarReads/PaymentToken';
 import { PurchaseRatio } from './components/stateVarReads/PurchaseRatio';
+import { BetPrice } from './components/stateVarReads/BetPrice';
 
 
 const { chains, provider } = configureChains(
@@ -56,6 +57,7 @@ const App = () => {
               <BetsOpen />
               <PaymentToken />
               {/* <PurchaseRatio />  REMOVE COMMENTS ONCE SET IN CONSTRUCTOR OF NEW DEPLOYMENT */}
+              <BetPrice />
             </Grid>
             Lottery contract methods.
             <Grid item xs={12} lg={12}>
