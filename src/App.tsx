@@ -49,22 +49,22 @@ const App = () => {
                 <BetStatus />
               </Grid>
             )}
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={12}>
               <BuyTokens />
             </Grid>
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={12}>
               <BalanceDisplay />
             </Grid>
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={12}>
               <BetsOpen />
             </Grid>
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={12}>
               <OpenBets />
             </Grid>
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={12}>
               <CloseLottery />
             </Grid>
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={12}>
               <Bet />
             </Grid>
           </Grid>
