@@ -7,10 +7,11 @@ import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
-import { BetsOpen } from './components/BetsOpen';
+import { BetsOpen } from './components/stateVarReads/BetsOpen';
 import { OpenBets } from './components/OpenBets';
 import { CloseLottery } from './components/CloseLottery';
 import { Bet } from './components/Bet';
+import { PaymentToken } from './components/stateVarReads/PaymentToken';
 
 
 const { chains, provider } = configureChains(
@@ -50,13 +51,15 @@ const App = () => {
               </Grid>
             )}
             <Grid item xs={12} lg={12}>
+              Lotter contract state variables.
+              <BetsOpen />
+              <PaymentToken />
+            </Grid>
+            <Grid item xs={12} lg={12}>
               <BuyTokens />
             </Grid>
             <Grid item xs={12} lg={12}>
               <BalanceDisplay />
-            </Grid>
-            <Grid item xs={12} lg={12}>
-              <BetsOpen />
             </Grid>
             <Grid item xs={12} lg={12}>
               <OpenBets />
