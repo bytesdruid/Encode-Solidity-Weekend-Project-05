@@ -5,10 +5,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_TOKEN_ABI} from "../constants/contracts";
-import { UserBalanceDisplay } from './ExportComponents';
 
 export const ReturnTokens = () => {
-    const [errorMessage, setErrorMessage] = React.useState('');
     const [tokens, setTokens] = React.useState('');
 
     const { isConnected } = useAccount();
@@ -33,16 +31,8 @@ export const ReturnTokens = () => {
             const tx = await lotteryC.returnTokens(ethers.utils.parseEther(tokens));
             const receipt = await tx.wait();
             console.log(`Burn confirmed (${receipt.transactionHash})\n`);
-            return (
-                <CardContent>
-                    <Typography component={'span'} variant={'body1'} align={'center'}>
-                        Refund comfirmed at {receipt.transactionHash}
-                    </Typography>
-                </CardContent>
-            )
         }
     }
-
     if (isConnected) {
          return (
                 <Card sx={{ minWidth: 275 }}>
