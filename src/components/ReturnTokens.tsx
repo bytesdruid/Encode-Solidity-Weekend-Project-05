@@ -20,6 +20,9 @@ export const ReturnTokens = () => {
               stateMutability: 'nonpayable',
               inputs: [{ internalType: 'uint256', name: 'amount', type: 'uint256' }],
               outputs: [],
+              onError(error: any) {
+                console.log('Error', error)
+              },
             },
         ],
         functionName: 'returnTokens',
