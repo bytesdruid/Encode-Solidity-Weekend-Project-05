@@ -6,17 +6,10 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
-    // SOLIDITY IMPLEMENTATION
-    // /// @notice Burns `amount` tokens and give the equivalent ETH back to user
-    // function returnTokens(uint256 amount) external {
-    //     paymentToken.burnFrom(msg.sender, amount);
-    //     payable(msg.sender).transfer(amount / purchaseRatio);
-    // }
-
 export const ReturnTokens = () => {
     const [amount, setAmount] = React.useState("0")
     const { address, isConnected, isDisconnected } = useAccount()
-    const BnAmount = ethers.BigNumber.from(amount)
+    const BnAmount = ethers.utils.parseEther(amount)
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: [
@@ -44,6 +37,7 @@ export const ReturnTokens = () => {
                             </button>
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
+                            {<div>{amount}</div>}
                         </div>
                         <div>
                             <input
