@@ -38,8 +38,8 @@ export const ReturnTokens = () => {
                             </button>
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-                            {<div>{amount}</div>}
-                            {<div>{`${BnAmount}`}</div>}
+                            {<div>{`Unformatted string amount is: ${amount}`}</div>}
+                            {<div>{`BigNumber amount is: ${BnAmount}`}</div>}
                         </div>
                         <div>
                             <input
