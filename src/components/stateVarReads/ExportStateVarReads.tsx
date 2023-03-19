@@ -1,4 +1,4 @@
-import { BetsOpen } from './BetsOpen';
+import { BetState } from './BetState';
 import { PaymentToken } from './PaymentToken';
 import { PurchaseRatio } from './PurchaseRatio';
 import { BetPrice } from './BetPrice';
@@ -8,7 +8,7 @@ import { OwnerPool } from './OwnerPool';
 import { BetsClosingTime } from './BetsClosingTime';
 
 export {
-    BetsOpen,
+    BetState,
     PaymentToken,
     PurchaseRatio,
     BetPrice,
