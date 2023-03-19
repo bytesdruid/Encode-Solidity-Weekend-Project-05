@@ -18,6 +18,7 @@ import { BetFee } from './components/stateVarReads/BetFee';
 import { PrizePool } from './components/stateVarReads/PrizePool';
 import { OwnerPool } from './components/stateVarReads/OwnerPool';
 import { BetsClosingTime } from './components/stateVarReads/BetsClosingTime';
+import { ReturnTokens } from './components/ReturnTokens';
 
 
 const { chains, provider } = configureChains(
@@ -83,6 +84,9 @@ const App = () => {
             <Grid item xs={12} lg={12}>
               <Bet />
             </Grid>
+            <Grid item xs={12} lg={12}>
+              <ReturnTokens />
+            </Grid>
           </Grid>
         )}
       </RainbowKitProvider>
@@ -92,3 +96,4 @@ const App = () => {
 };
 
 export default App;
+
