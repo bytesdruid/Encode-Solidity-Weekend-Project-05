@@ -28,6 +28,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
 import { PrizeWithdraw } from './components/PrizeWithdraw';
 import { OwnerWithdraw } from './components/OwnerWithdraw';
+import { TokenAllowance } from './components/TokenAllowance';
 
 const { chains, provider } = configureChains(
   [sepolia],
@@ -64,6 +65,10 @@ const App = () => {
             Token contract state variables.
             <Grid item xs={12} lg={12}>
               <UserBalanceDisplay />
+            </Grid>
+            Token contract methods.
+            <Grid item xs={12} lg={12}>
+              <TokenAllowance />
             </Grid>
             Lottery contract state variables.
             <Grid item xs={12} lg={12}>
