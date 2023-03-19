@@ -18,6 +18,7 @@ export const CloseLottery = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
+                        CloseLotter Component - Closes lottery once closing block has passed.
                         <div>
                             <button disabled={!write} onClick={() => write?.()}>
                                 Close Lottery
