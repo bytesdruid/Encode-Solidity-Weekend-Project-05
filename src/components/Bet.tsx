@@ -5,9 +5,8 @@ import Typography from '@mui/material/Typography';
 import { BigNumber, ethers, providers, Signer, utils } from 'ethers';
 import lotteryJson from '../assets/Lottery.json';
 import React from 'react';
-import { parseBytes32String } from 'ethers/lib/utils.js';
 
-export const OpenBets = () => {
+export const Bet = () => {
     const [closingTime, setClosingTime] = React.useState("0")
     const closingTimeNumber = utils.parseEther(closingTime)
     // const closingTimeConversion = closingTimeNumber.div(1000000000000000000)
@@ -16,14 +15,14 @@ export const OpenBets = () => {
         address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
         abi: [
             {
-              name: 'openBets',
+              name: 'bet',
               type: 'function',
               stateMutability: 'nonpayable',
               inputs: [{ internalType: 'uint256', name: 'closingTime', type: 'uint256' }],
               outputs: [],
             },
         ],
-        functionName: 'openBets',
+        functionName: 'bet',
         args: [closingTimeNumber],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
