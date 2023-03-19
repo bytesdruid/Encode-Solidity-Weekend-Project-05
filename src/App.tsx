@@ -16,6 +16,7 @@ import { PurchaseRatio } from './components/stateVarReads/PurchaseRatio';
 import { BetPrice } from './components/stateVarReads/BetPrice';
 import { BetFee } from './components/stateVarReads/BetFee';
 import { PrizePool } from './components/stateVarReads/PrizePool';
+import { OwnerPool } from './components/stateVarReads/OwnerPool';
 
 
 const { chains, provider } = configureChains(
@@ -58,10 +59,11 @@ const App = () => {
             <Grid item xs={12} lg={12}>
               <BetsOpen />
               <PaymentToken />
-              {/* <PurchaseRatio />  REMOVE COMMENTS ONCE SET IN CONSTRUCTOR OF NEW DEPLOYMENT */}
+              {/* <PurchaseRatio />  NOT SURE WHY THIS ISNT RETURNING A VALUE */}
               <BetPrice />
               <BetFee />
               <PrizePool />
+              <OwnerPool />
             </Grid>
             Lottery contract methods.
             <Grid item xs={12} lg={12}>
