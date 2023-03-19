@@ -2,9 +2,9 @@
 
 Deployer's wallet address: **0x4FAC925B7279Ad39dc4340a5158dfd049f43eD10**
 
-Lottery contract deployed at [https://sepolia.etherscan.io/address/0x89f957389784DbB036d9F32F3358cd32B22F9ac8](https://sepolia.etherscan.io/address/0x89f957389784DbB036d9F32F3358cd32B22F9ac8)
+Lottery contract deployed at [https://sepolia.etherscan.io/address/0x4c5Ec2E9a3fC3eedE1DA4189B0f0db74eCeB7695](https://sepolia.etherscan.io/address/0x4c5Ec2E9a3fC3eedE1DA4189B0f0db74eCeB7695)
 
-Lottery Token contract deployed at [https://sepolia.etherscan.io/address/0x8018f4655a87a7be462b72dcb967e67fff515a52](https://sepolia.etherscan.io/address/0x8018f4655a87a7be462b72dcb967e67fff515a52)
+Lottery Token contract deployed at [https://sepolia.etherscan.io/address/0xca25D30F1f2f01Be696AFC5ADA4fbe9FFAea3755](https://sepolia.etherscan.io/address/0xca25D30F1f2f01Be696AFC5ADA4fbe9FFAea3755)
 
 # Getting Started with Create React App
 
