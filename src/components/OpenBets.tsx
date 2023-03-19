@@ -1,19 +1,18 @@
-import { useAccount, useContract, usePrepareContractWrite, useContractWrite } from 'wagmi'
+import React from 'react';
+import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { BigNumber, ethers, providers, Signer, utils } from 'ethers';
-import lotteryJson from '../assets/Lottery.json';
-import React from 'react';
-import { parseBytes32String } from 'ethers/lib/utils.js';
+import { ethers} from 'ethers';
+import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
 export const OpenBets = () => {
     const [closingTime, setClosingTime] = React.useState("0")
-    const closingTimeNumber = utils.parseEther(closingTime)
+    const closingTimeNumber = ethers.utils.parseEther(closingTime)
     // const closingTimeConversion = closingTimeNumber.div(1000000000000000000)
     const { address, isConnected, isDisconnected } = useAccount()
     const { config } = usePrepareContractWrite({
-        address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
+        address: LOTTERY_CONTRACT_ADDRESS,
         abi: [
             {
               name: 'openBets',

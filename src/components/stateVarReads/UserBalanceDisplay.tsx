@@ -1,15 +1,16 @@
 import { useAccount, useContractRead, useBalance } from 'wagmi'
-import lotteryTokenABI from '../assets/LotteryToken.json';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Alert, CircularProgress, CircularProgressClasses } from '@mui/material';
+import { LOTTERY_TOKEN_ADDRESS } from '../../constants/contracts';
 
-export const BalanceDisplay = () => {
+
+export const UserBalanceDisplay = () => {
     const { address, isConnected, isDisconnected } = useAccount();
     const { data, isError, isLoading } = useBalance({
         address: address,
-        token: '0xdFd4C5Dd8ec6b24add525d4e2b9630a1733610b6',
+        token: LOTTERY_TOKEN_ADDRESS,
     })
 
     if (isConnected) {

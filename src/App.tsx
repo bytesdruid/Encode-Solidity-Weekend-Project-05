@@ -1,4 +1,23 @@
-import { Connect, BetTimer, BetStatus, BalanceDisplay, BuyTokens  } from './components/Components'
+import { 
+  Connect, 
+  BetTimer, 
+  UserBalanceDisplay, 
+  BuyTokens, 
+  Bet,  
+  OpenBets,
+  CloseLottery,
+  ReturnTokens
+} from './components/ExportComponents';
+import {
+  BetsOpen,
+  PaymentToken,
+  PurchaseRatio,
+  BetPrice,
+  BetFee,
+  PrizePool,
+  OwnerPool,
+  BetsClosingTime
+} from './components/stateVarReads/ExportStateVarReads';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig, useAccount } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
@@ -7,19 +26,6 @@ import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
-import { BetsOpen } from './components/stateVarReads/BetsOpen';
-import { OpenBets } from './components/OpenBets';
-import { CloseLottery } from './components/CloseLottery';
-import { Bet } from './components/Bet';
-import { PaymentToken } from './components/stateVarReads/PaymentToken';
-import { PurchaseRatio } from './components/stateVarReads/PurchaseRatio';
-import { BetPrice } from './components/stateVarReads/BetPrice';
-import { BetFee } from './components/stateVarReads/BetFee';
-import { PrizePool } from './components/stateVarReads/PrizePool';
-import { OwnerPool } from './components/stateVarReads/OwnerPool';
-import { BetsClosingTime } from './components/stateVarReads/BetsClosingTime';
-import { ReturnTokens } from './components/ReturnTokens';
-
 
 const { chains, provider } = configureChains(
   [sepolia],
@@ -53,20 +59,15 @@ const App = () => {
              <Grid item xs={12} >
               <BetTimer />
             </Grid>
-            {!(address == deployer) ? null : (
-              <Grid item xs={12}>
-                <BetStatus />
-              </Grid>
-            )}
             Token contract state variables.
             <Grid item xs={12} lg={12}>
-              <BalanceDisplay />
+              <UserBalanceDisplay />
             </Grid>
             Lottery contract state variables.
             <Grid item xs={12} lg={12}>
               <BetsOpen />
               <PaymentToken />
-              {/* <PurchaseRatio />  NOT SURE WHY THIS ISNT RETURNING A VALUE */}
+              <PurchaseRatio />
               <BetPrice />
               <BetFee />
               <PrizePool />

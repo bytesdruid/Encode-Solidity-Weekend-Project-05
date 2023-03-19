@@ -1,18 +1,21 @@
-import { useAccount, useContract, usePrepareContractWrite, useContractWrite, useContractReads, useContractRead } from 'wagmi'
+import { ethers } from "ethers";
+import { useAccount, useContractRead } from 'wagmi';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import lotteryJson from '../../assets/Lottery.json';
+import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../../constants/contracts";
 
 export const BetsClosingTime = () => {
     const { address, isConnected, isDisconnected } = useAccount()
     const { data, isError, isLoading } = useContractRead({
-        address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
-        abi: lotteryJson.abi,
+        address: LOTTERY_CONTRACT_ADDRESS,
+        abi: LOTTERY_ABI,
         functionName: 'betsClosingTime',
       })
       
-    if (isConnected) {
+    if (isConnected && data) {
+        const closingTimeDate = data.toString();
+        console.log(closingTimeDate)
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
