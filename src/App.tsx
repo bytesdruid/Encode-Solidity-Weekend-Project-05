@@ -17,6 +17,7 @@ import { BetPrice } from './components/stateVarReads/BetPrice';
 import { BetFee } from './components/stateVarReads/BetFee';
 import { PrizePool } from './components/stateVarReads/PrizePool';
 import { OwnerPool } from './components/stateVarReads/OwnerPool';
+import { BetsClosingTime } from './components/stateVarReads/BetsClosingTime';
 
 
 const { chains, provider } = configureChains(
@@ -55,7 +56,7 @@ const App = () => {
                 <BetStatus />
               </Grid>
             )}
-            Lotter contract state variables.
+            Lottery contract state variables.
             <Grid item xs={12} lg={12}>
               <BetsOpen />
               <PaymentToken />
@@ -64,6 +65,7 @@ const App = () => {
               <BetFee />
               <PrizePool />
               <OwnerPool />
+              <BetsClosingTime />
             </Grid>
             Lottery contract methods.
             <Grid item xs={12} lg={12}>
