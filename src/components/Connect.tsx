@@ -9,7 +9,6 @@ export const Connect = () => {
         display: "flex",
         flexDirection: "row-reverse",
         padding: "10px"
-
       }}
      >
       <ConnectButton />

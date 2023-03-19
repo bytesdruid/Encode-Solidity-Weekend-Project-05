@@ -17,7 +17,7 @@ export const BalanceDisplay = () => {
         if (isError) return <Alert severity="error">Error fetching balance</Alert>
         return (
             <div style={{ textAlign: "center"}}>
-                <Card sx={{ minWidth: 275 }}>
+                 <Card sx={{ minWidth: 275, minHeight: 100 }}>
                     <CardContent>
                         <Typography component={'span'} variant={'body1'} align="center">
                             Balance: <strong>{data?.formatted} {data?.symbol}</strong>
