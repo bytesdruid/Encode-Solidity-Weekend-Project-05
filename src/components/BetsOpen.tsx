@@ -18,7 +18,7 @@ export const BetsOpen = () => {
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        BETS OPEN
+                        BetsOpen Component - Displays if betting is open.
                         {!isError && <div>Betting is currently open: {JSON.stringify(data)}</div>}
                     </Typography>
                 </CardContent>
