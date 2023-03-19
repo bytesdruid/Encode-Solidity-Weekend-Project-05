@@ -49,6 +49,7 @@ const App = () => {
         <p>Please <strong>Connect Wallet</strong> to Play</p> : 
         (
           <Grid container spacing={1}>
+             TODO Components - from Hardeep
              <Grid item xs={12} >
               <BetTimer />
             </Grid>
@@ -68,12 +69,13 @@ const App = () => {
               <OwnerPool />
               <BetsClosingTime />
             </Grid>
+            Token contract state variables.
+            <Grid item xs={12} lg={12}>
+              <BalanceDisplay />
+            </Grid>
             Lottery contract methods.
             <Grid item xs={12} lg={12}>
               <BuyTokens />
-            </Grid>
-            <Grid item xs={12} lg={12}>
-              <BalanceDisplay />
             </Grid>
             <Grid item xs={12} lg={12}>
               <OpenBets />
