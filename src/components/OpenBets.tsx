@@ -9,13 +9,22 @@ import { parseBytes32String } from 'ethers/lib/utils.js';
 
 export const OpenBets = () => {
     const [closingTime, setClosingTime] = React.useState("0")
-    const closingTimeNumber = parseInt(closingTime)
+    const closingTimeNumber = utils.parseEther(closingTime)
+    // const closingTimeConversion = closingTimeNumber.div(1000000000000000000)
     const { address, isConnected, isDisconnected } = useAccount()
     const { config } = usePrepareContractWrite({
         address: '0xdaD7677997871308ab84E22C93A6231cAe0B67f3',
-        abi: lotteryJson.abi,
+        abi: [
+            {
+              name: 'openBets',
+              type: 'function',
+              stateMutability: 'nonpayable',
+              inputs: [{ internalType: 'uint256', name: 'closingTime', type: 'uint256' }],
+              outputs: [],
+            },
+        ],
         functionName: 'openBets',
-        args: [closingTime],
+        args: [closingTimeNumber],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
@@ -30,13 +39,12 @@ export const OpenBets = () => {
                             </button>
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-                            {<div>Num: {closingTimeNumber}</div>}
                         </div>
                         <div>
                             <input
-                                id="amount"
+                                id="closingBlockNumber"
                                 onChange={(e) => setClosingTime(e.target.value)}
-                                placeholder="Amount of tokens to purchase."
+                                placeholder="Closing block number."
                                 value={closingTime}
                             />
                         </div>
