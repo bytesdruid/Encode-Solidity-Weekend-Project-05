@@ -27,6 +27,7 @@ import { Grid } from '@mui/material';
 import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
 import { PrizeWithdraw } from './components/PrizeWithdraw';
+import { OwnerWithdraw } from './components/PrizeWithdraw copy';
 
 const { chains, provider } = configureChains(
   [sepolia],
@@ -93,6 +94,9 @@ const App = () => {
             </Grid>
             <Grid item xs={12} lg={12}>
               <PrizeWithdraw />
+            </Grid>
+            <Grid item xs={12} lg={12}>
+              <OwnerWithdraw />
             </Grid>
           </Grid>
         )}
