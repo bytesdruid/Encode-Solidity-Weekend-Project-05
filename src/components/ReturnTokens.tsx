@@ -1,58 +1,68 @@
 import React from 'react';
-import { BigNumber, ethers } from 'ethers';
-import { useAccount, usePrepareContractWrite, useContractWrite } from 'wagmi'
+import { ethers } from 'ethers';
+import { useAccount, useContract, useSigner } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
+import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_TOKEN_ABI} from "../constants/contracts";
+import { UserBalanceDisplay } from './ExportComponents';
 
 export const ReturnTokens = () => {
-    const [amount, setAmount] = React.useState("0")
-    const { address, isConnected, isDisconnected } = useAccount()
-    const BnAmount = ethers.utils.parseUnits(amount, 0)
-    const formatAmount = ethers.utils.formatEther(BnAmount, )
-    const { config } = usePrepareContractWrite({
+    const [errorMessage, setErrorMessage] = React.useState('');
+    const [tokens, setTokens] = React.useState('');
+
+    const { isConnected } = useAccount();
+    const { data: signer, isError, isLoading } = useSigner()
+    const lotteryC = useContract({
         address: LOTTERY_CONTRACT_ADDRESS,
-        abi: [
-            {
-              name: 'returnTokens',
-              type: 'function',
-              stateMutability: 'nonpayable',
-              inputs: [{ internalType: 'uint256', name: 'amount', type: 'uint256' }],
-              outputs: [],
-            },
-        ],
-        functionName: 'returnTokens',
-        args: [BnAmount],
-    })
-    const { data, isLoading, isSuccess, write } = useContractWrite(config)
-      
-    if (isConnected) {
-        return (
-            <Card sx={{ minWidth: 275 }}>
+        abi: LOTTERY_ABI,
+        signerOrProvider: signer,
+    });
+
+    const tokenC = useContract({
+        address: LOTTERY_TOKEN_ADDRESS,
+        abi: LOTTERY_TOKEN_ABI,
+        signerOrProvider: signer,
+    });
+
+    async function handleSubmit() {
+        if(lotteryC && tokenC) {
+            const allowTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther(tokens));
+            const receiptAllow = await allowTx.wait();
+            console.log(`Allowance confirmed (${receiptAllow.transactionHash})\n`);
+            const tx = await lotteryC.returnTokens(ethers.utils.parseEther(tokens));
+            const receipt = await tx.wait();
+            console.log(`Burn confirmed (${receipt.transactionHash})\n`);
+            return (
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
-                        <div>
-                            <button disabled={!write} onClick={() => write?.()}>
-                                Return Tokens
-                            </button>
-                            {isLoading && <div>Check Wallet</div>}
-                            {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-                            {<div>{`Unformatted string amount is: ${amount}`}</div>}
-                            {<div>{`BigNumber amount is: ${BnAmount}`}</div>}
-                        </div>
-                        <div>
-                            <input
-                                id="amount"
-                                onChange={(e) => setAmount(e.target.value)}
-                                placeholder="Amount of tokens to burn."
-                                value={amount}
-                            />
-                        </div>
+                        Refund comfirmed at {receipt.transactionHash}
                     </Typography>
                 </CardContent>
-            </Card>
-      );
+            )
+        }
+    }
+
+    if (isConnected) {
+         return (
+                <Card sx={{ minWidth: 275 }}>
+                    <CardContent>
+                        <Typography component={'span'} variant={'body1'} align={'center'}>
+                            <div>
+                                <input
+                                    value={tokens}
+                                    onChange={e => setTokens(e.target.value)}
+                                    placeholder="enter token amount"
+                                    min={1}
+                                    type="number" />
+                                <button onClick={handleSubmit}>
+                                    refund ETH
+                                </button>
+                            </div>
+                        </Typography>
+                    </CardContent>
+                </Card>
+        )
     }
     return <div>Not Connected</div>
 }

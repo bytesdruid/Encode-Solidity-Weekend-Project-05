@@ -1,6 +1,5 @@
 import { 
   Connect, 
-  BetTimer, 
   UserBalanceDisplay, 
   BuyTokens, 
   Bet,  
@@ -28,7 +27,6 @@ import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
 import { PrizeWithdraw } from './components/PrizeWithdraw';
 import { OwnerWithdraw } from './components/OwnerWithdraw';
-import { TokenAllowance } from './components/TokenAllowance';
 
 const { chains, provider } = configureChains(
   [sepolia],
@@ -58,17 +56,9 @@ const App = () => {
         <p>Please <strong>Connect Wallet</strong> to Play</p> : 
         (
           <Grid container spacing={1}>
-             TODO Components - from Hardeep
-             <Grid item xs={12} >
-              <BetTimer />
-            </Grid>
             Token contract state variables.
             <Grid item xs={12} lg={12}>
               <UserBalanceDisplay />
-            </Grid>
-            Token contract methods.
-            <Grid item xs={12} lg={12}>
-              <TokenAllowance />
             </Grid>
             Lottery contract state variables.
             <Grid item xs={12} lg={12}>
@@ -89,19 +79,19 @@ const App = () => {
               <OpenBets />
             </Grid>
             <Grid item xs={12} lg={12}>
-              <CloseLottery />
-            </Grid>
-            <Grid item xs={12} lg={12}>
               <Bet />
             </Grid>
             <Grid item xs={12} lg={12}>
-              <ReturnTokens />
+              <CloseLottery />
             </Grid>
             <Grid item xs={12} lg={12}>
               <PrizeWithdraw />
             </Grid>
             <Grid item xs={12} lg={12}>
               <OwnerWithdraw />
+            </Grid>
+            <Grid item xs={12} lg={12}>
+              <ReturnTokens />
             </Grid>
           </Grid>
         )}
