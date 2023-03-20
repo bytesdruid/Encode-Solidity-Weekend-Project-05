@@ -10,6 +10,9 @@ export const Bet = () => {
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: LOTTERY_ABI,
         functionName: 'bet',
+        onError(error: any) {
+            console.log('Error', error)
+          },
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
