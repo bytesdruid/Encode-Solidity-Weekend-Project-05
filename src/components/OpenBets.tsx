@@ -8,7 +8,7 @@ import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
 
 export const OpenBets = () => {
     const [closingTime, setClosingTime] = React.useState("0")
-    const closingTimeNumber = BigNumber.from(closingTime)
+    const closingTimeNumber = BigNumber.from(parseInt(closingTime) > 0 ? closingTime : "0")
     const { address, isConnected, isDisconnected } = useAccount()
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
@@ -25,14 +25,19 @@ export const OpenBets = () => {
         args: [closingTimeNumber],
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
-      
+    
+    const openBetsHandler = () => {
+        if (parseInt(closingTime) > 0) write?.();
+        alert('Please enter an amount greater than 0')
+    }
+    
     if (isConnected) {
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
-                            <button disabled={!write} onClick={() => write?.()}>
+                            <button disabled={!write} onClick={openBetsHandler}>
                                 Open Bets
                             </button>
                             {isLoading && <div>Check Wallet</div>}
