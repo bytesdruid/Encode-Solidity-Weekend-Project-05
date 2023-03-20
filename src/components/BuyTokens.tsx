@@ -11,7 +11,7 @@ export const BuyTokens = () => {
     const TOKEN_RATIO = 1000;
     const [amount, setAmount] = React.useState("0")
     const { address, isConnected, isDisconnected } = useAccount()
-    const formatEtherAmount = ethers.utils.parseEther(amount).div(TOKEN_RATIO);
+    const formatEtherAmount = parseInt(amount) > 0 ? ethers.utils.parseEther(amount).div(TOKEN_RATIO) : ethers.utils.parseEther("0");
     const { config } = usePrepareContractWrite({
         address: LOTTERY_CONTRACT_ADDRESS,
         abi: LOTTERY_ABI,
@@ -37,7 +37,7 @@ export const BuyTokens = () => {
                                 id="amount"
                                 onChange={(e) => setAmount(e.target.value)}
                                 placeholder="Amount of tokens to purchase."
-                                value={amount}
+                                value={parseInt(amount) > 0 ? amount : "0"}
                             />
                         </div>
                     </Typography>
