@@ -31,7 +31,7 @@ export const OwnerWithdraw = () => {
 
   const ownerWithdrawHandler = () => {
     if (parseInt(amount) > 0) write?.();
-    alert('Please enter an amount greater than 0');
+    else alert('Please enter an amount greater than 0');
   };
 
   if (isConnected) {
