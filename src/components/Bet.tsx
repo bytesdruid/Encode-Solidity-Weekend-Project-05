@@ -7,6 +7,8 @@ import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_TOKEN_ABI} from "../constants/contracts";
 
 export const Bet = () => {
+    const [tokens, setTokens] = React.useState('');
+
     const { isConnected } = useAccount();
     const { data: signer, isError, isLoading } = useSigner()
     const lotteryC = useContract({
@@ -26,7 +28,7 @@ export const Bet = () => {
             const allowTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther(tokens));
             const receiptAllow = await allowTx.wait();
             console.log(`Allowance confirmed (${receiptAllow.transactionHash})\n`);
-            const tx = await lotteryC.bet(ethers.utils.parseEther(tokens));
+            const tx = await lotteryC.bet();
             const receipt = await tx.wait();
             console.log(`Burn confirmed (${receipt.transactionHash})\n`);
         }
@@ -37,6 +39,12 @@ export const Bet = () => {
                     <CardContent>
                         <Typography component={'span'} variant={'body1'} align={'center'}>
                             <div>
+                                <input
+                                    value={tokens}
+                                    onChange={e => setTokens(e.target.value)}
+                                    placeholder="enter token amount"
+                                    min={1}
+                                    type="number" />
                                 <button onClick={handleSubmit}>
                                     Bet
                                 </button>
