@@ -8,8 +8,6 @@ import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_T
 import { sign } from 'crypto';
 
 export const Bet = () => {
-    const [tokens, setTokens] = React.useState('');
-
     const { isConnected } = useAccount();
     const { data: signer, isError, isLoading } = useSigner()
     const lotteryC = useContract({
@@ -26,7 +24,7 @@ export const Bet = () => {
 
     async function handleSubmit() {
         if(lotteryC && tokenC) {
-            const approveTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther(tokens));
+            const approveTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther("2"));
             const receiptApprove = await approveTx.wait();
             console.log(`Approve confirmed (${receiptApprove.transactionHash})\n`);
             const allowanceTx = await tokenC.allowance(LOTTERY_CONTRACT_ADDRESS, LOTTERY_TOKEN_ADDRESS);
@@ -41,12 +39,6 @@ export const Bet = () => {
                     <CardContent>
                         <Typography component={'span'} variant={'body1'} align={'center'}>
                             <div>
-                                <input
-                                    value={tokens}
-                                    onChange={e => setTokens(e.target.value)}
-                                    placeholder="enter token amount"
-                                    min={1}
-                                    type="number" />
                                 <button onClick={handleSubmit}>
                                     Bet
                                 </button>
