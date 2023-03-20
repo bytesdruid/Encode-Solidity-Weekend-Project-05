@@ -29,7 +29,6 @@ export const Bet = () => {
             const approveTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther(tokens));
             const receiptApprove = await approveTx.wait();
             console.log(`Approve confirmed (${receiptApprove.transactionHash})\n`);
-            // get the allowanmce to work
             const allowanceTx = await tokenC.allowance(LOTTERY_CONTRACT_ADDRESS, LOTTERY_TOKEN_ADDRESS);
             const tx = await lotteryC.bet();
             const receipt = await tx.wait();
