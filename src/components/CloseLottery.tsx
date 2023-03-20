@@ -19,7 +19,7 @@ export const CloseLottery = () => {
       
     if (isConnected) {
         return (
-            <Card sx={{ minWidth: 275 }}>
+            <Card sx={{ minWidth: 275, paddingY: '12px' }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
