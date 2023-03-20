@@ -6,6 +6,8 @@ import {
   OpenBets,
   CloseLottery,
   ReturnTokens,
+  PrizeWithdraw,
+  OwnerWithdraw
 } from './components/ExportComponents';
 import {
   BetState,
@@ -15,8 +17,9 @@ import {
   BetFee,
   PrizePool,
   OwnerPool,
-  BetsClosingTime,
+  BetsClosingTime
 } from './components/stateVarReads/ExportStateVarReads';
+import FadeCard from './components/FadeCard';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig, useAccount } from 'wagmi';
 import { sepolia } from 'wagmi/chains';
@@ -25,9 +28,6 @@ import Container from '@mui/material/Container';
 import { Grid } from '@mui/material';
 import '@rainbow-me/rainbowkit/styles.css';
 import './App.css';
-import { PrizeWithdraw } from './components/PrizeWithdraw';
-import { OwnerWithdraw } from './components/OwnerWithdraw';
-import FadeCard from './components/FadeCard';
 
 const { chains, provider } = configureChains(
   [sepolia],

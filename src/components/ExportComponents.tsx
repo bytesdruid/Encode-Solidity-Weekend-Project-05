@@ -6,6 +6,8 @@ import { Bet } from './Bet';
 import { OpenBets } from './OpenBets';
 import { CloseLottery } from './CloseLottery';
 import { ReturnTokens } from './ReturnTokens';
+import { PrizeWithdraw } from './PrizeWithdraw';
+import { OwnerWithdraw } from './OwnerWithdraw';
 
 export {
     UserBalanceDisplay,
@@ -15,5 +17,7 @@ export {
     Bet,
     CloseLottery,
     ReturnTokens,
+    PrizeWithdraw,
+    OwnerWithdraw,
     Connect
 }
