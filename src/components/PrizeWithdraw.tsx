@@ -5,14 +5,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from '../constants/contracts';
+import { Button, TextField } from '@mui/material';
 
 export const PrizeWithdraw = () => {
   const [amount, setAmount] = React.useState('0');
   const { address, isConnected, isDisconnected } = useAccount();
   const BnAmount =
     parseInt(amount) > 0
-      ? ethers.BigNumber.from(amount)
-      : ethers.BigNumber.from('0');
+      ? ethers.utils.parseEther(amount)
+      : ethers.utils.parseEther('0');
   const { config } = usePrepareContractWrite({
     address: LOTTERY_CONTRACT_ADDRESS,
     abi: [
@@ -36,23 +37,23 @@ export const PrizeWithdraw = () => {
 
   if (isConnected) {
     return (
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275, minHeight: 90 }}>
         <CardContent>
           <Typography component={'span'} variant={'body1'} align={'center'}>
             <div>
-              <button disabled={!write} onClick={prizeWithdrawHandler}>
+              <TextField
+                id='amount'
+                type="number"
+                size="small"
+                placeholder="enter token amount"
+                onChange={(e) => setAmount(e.target.value)}
+                value={amount}
+                />
+                <Button variant="contained" disabled={!write} onClick={prizeWithdrawHandler}>
                 Prize Withdraw
-              </button>
+              </Button>
               {isLoading && <div>Check Wallet</div>}
               {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-            </div>
-            <div>
-              <input
-                id='amount'
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder='Amount of prize to withdraw.'
-                value={amount}
-              />
             </div>
           </Typography>
         </CardContent>

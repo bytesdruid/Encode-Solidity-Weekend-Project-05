@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_TOKEN_ABI} from "../constants/contracts";
+import { Button, TextField } from '@mui/material';
 
 export const ReturnTokens = () => {
     const [tokens, setTokens] = React.useState('');
@@ -35,19 +36,21 @@ export const ReturnTokens = () => {
     }
     if (isConnected) {
          return (
-                <Card sx={{ minWidth: 275 }}>
+                <Card sx={{ minWidth: 275, minHeight: 90 }}>
                     <CardContent>
                         <Typography component={'span'} variant={'body1'} align={'center'}>
                             <div>
-                                <input
+                                <TextField
                                     value={tokens}
                                     onChange={e => setTokens(e.target.value)}
                                     placeholder="enter token amount"
-                                    min={1}
-                                    type="number" />
-                                <button onClick={handleSubmit}>
+                                    InputProps={{ inputProps: { min: 1 } }}
+                                    type="number"
+                                    size="small" 
+                                    />
+                                <Button variant="contained" onClick={handleSubmit}>
                                     refund ETH
-                                </button>
+                                </Button>
                             </div>
                         </Typography>
                     </CardContent>

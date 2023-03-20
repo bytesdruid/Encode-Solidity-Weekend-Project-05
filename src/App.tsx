@@ -5,7 +5,6 @@ import {
   Bet,
   OpenBets,
   CloseLottery,
-  BetTimer,
   ReturnTokens,
 } from './components/ExportComponents';
 import {
@@ -70,9 +69,6 @@ const App = () => {
                 <Grid item xs={12} lg={12}>
                   <UserBalanceDisplay />
                 </Grid>
-                <Grid item xs={12} lg={12}>
-                  <BetTimer />
-                </Grid>
                 <div className='section-title'>
                   Lottery contract state variables.
                 </div>
@@ -93,15 +89,22 @@ const App = () => {
               </Grid>
               <div className='section-title'>Lottery contract methods.</div>
               <Grid container columns={12} spacing={2}>
+              <Grid item xs={12} sm={6} md={4}>
+                  <FadeCard>
+                    <OpenBets />
+                  </FadeCard>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                  <FadeCard>
+                    <CloseLottery />
+                  </FadeCard>
+                </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                   <FadeCard>
                     <BuyTokens />
                   </FadeCard>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <FadeCard>
-                    <OpenBets />
-                  </FadeCard>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                   <FadeCard>
@@ -109,9 +112,6 @@ const App = () => {
                   </FadeCard>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                  <FadeCard>
-                    <CloseLottery />
-                  </FadeCard>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                   <FadeCard>

@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { ethers, BigNumber} from 'ethers';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
+import { Button, TextField } from '@mui/material';
 
 export const OpenBets = () => {
     const [closingTime, setClosingTime] = React.useState("0")
@@ -33,23 +34,24 @@ export const OpenBets = () => {
     
     if (isConnected) {
         return (
-            <Card sx={{ minWidth: 275 }}>
+            <Card sx={{ minWidth: 275, minHeight: 90 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
-                            <button disabled={!write} onClick={openBetsHandler}>
-                                Open Bets
-                            </button>
-                            {isLoading && <div>Check Wallet</div>}
-                            {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-                        </div>
-                        <div>
-                            <input
+                            Enter future <a href=" https://www.epochconverter.com/"><strong>EPOCH Timestamp</strong></a>
+                            <br/>
+                        <TextField
                                 id="closingBlockNumber"
+                                size="small"
                                 onChange={(e) => setClosingTime(e.target.value)}
-                                placeholder="Closing block number."
+                                placeholder="EPOCH TIMESTAMP"
                                 value={closingTime}
                             />
+                            <Button variant="contained" disabled={!write} onClick={openBetsHandler}>
+                                Open Bets
+                            </Button>
+                            {isLoading && <div>Check Wallet</div>}
+                            {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
                         </div>
                     </Typography>
                 </CardContent>

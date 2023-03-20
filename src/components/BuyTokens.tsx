@@ -4,7 +4,9 @@ import { useAccount, useContract, usePrepareContractWrite, useContractWrite } fr
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
+import { TextField } from '@mui/material';
 
 
 export const BuyTokens = () => {
@@ -26,23 +28,24 @@ export const BuyTokens = () => {
     }
     if (isConnected) {
         return (
-            <Card sx={{ minWidth: 275 }}>
+            <Card sx={{ minWidth: 275, minHeight: 100 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
-                            <button disabled={!write} onClick={purchaseHandler}>
-                                Purchase Tokens
-                            </button>
-                            {isLoading && <div>Check Wallet</div>}
-                            {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-                        </div>
-                        <div>
-                            <input
+                        <TextField
                                 id="amount"
+                                type="number"
+                                size="small"
+                                InputProps={{ inputProps: { min: 1 } }}
                                 onChange={(e) => setAmount(e.target.value)}
-                                placeholder="Amount of tokens to purchase."
+                                placeholder="enter token amount"
                                 value={amount}
                             />
+                            <Button variant="contained" disabled={!write} onClick={purchaseHandler}>
+                                Purchase Tokens
+                            </Button>
+                            {isLoading && <div>Check Wallet</div>}
+                            {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
                         </div>
                     </Typography>
                 </CardContent>

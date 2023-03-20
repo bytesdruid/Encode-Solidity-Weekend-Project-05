@@ -4,6 +4,7 @@ import { useAccount, useContract, useSigner } from 'wagmi'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_TOKEN_ABI} from "../constants/contracts";
 import { sign } from 'crypto';
 
@@ -35,13 +36,13 @@ export const Bet = () => {
     }
     if (isConnected) {
          return (
-                <Card sx={{ minWidth: 275, paddingY: '12px'  }}>
+                <Card sx={{ minWidth: 275, minHeight: 90, paddingY: '12px'  }}>
                     <CardContent>
                         <Typography component={'span'} variant={'body1'} align={'center'}>
                             <div>
-                                <button onClick={handleSubmit}>
-                                    Bet
-                                </button>
+                                <Button variant="contained" color="success" size="large" onClick={handleSubmit}>
+                                    Bet!
+                                </Button>
                             </div>
                         </Typography>
                     </CardContent>

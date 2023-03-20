@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from "../constants/contracts";
+import { Button } from '@mui/material';
 
 
 export const CloseLottery = () => {
@@ -19,13 +20,13 @@ export const CloseLottery = () => {
       
     if (isConnected) {
         return (
-            <Card sx={{ minWidth: 275, paddingY: '12px' }}>
+            <Card sx={{ minWidth: 275, minHeight: 90,  paddingY: '12px' }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
-                            <button disabled={!write} onClick={() => write?.()}>
+                            <Button variant="contained" disabled={!write} onClick={() => write?.()}>
                                 Close Lottery
-                            </button>
+                            </Button>
                             {isLoading && <div>Check Wallet</div>}
                             {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
                         </div>

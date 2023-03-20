@@ -5,14 +5,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI } from '../constants/contracts';
+import { Button, TextField } from '@mui/material';
 
 export const OwnerWithdraw = () => {
   const [amount, setAmount] = React.useState('0');
   const { address, isConnected, isDisconnected } = useAccount();
   const BnAmount =
     parseInt(amount) > 0
-      ? ethers.BigNumber.from(amount)
-      : ethers.BigNumber.from('0');
+      ? ethers.utils.parseEther(amount)
+      : ethers.utils.parseEther('0');
   const { config } = usePrepareContractWrite({
     address: LOTTERY_CONTRACT_ADDRESS,
     abi: [
@@ -36,23 +37,23 @@ export const OwnerWithdraw = () => {
 
   if (isConnected) {
     return (
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275, minHeight: 90 }}>
         <CardContent>
           <Typography component={'span'} variant={'body1'} align={'center'}>
             <div>
-              <button disabled={!write} onClick={ownerWithdrawHandler}>
-                Owner Withdraw
-              </button>
-              {isLoading && <div>Check Wallet</div>}
-              {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
-            </div>
-            <div>
-              <input
+            <TextField
                 id='amount'
+                type='number'
+                size="small"
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder='Amount of prize to withdraw.'
+                placeholder='enter token amount'
                 value={amount}
               />
+              <Button variant="contained" disabled={!write} onClick={ownerWithdrawHandler}>
+                Owner Withdraw
+              </Button>
+              {isLoading && <div>Check Wallet</div>}
+              {isSuccess && <div>Transaction: {JSON.stringify(data)}</div>}
             </div>
           </Typography>
         </CardContent>
