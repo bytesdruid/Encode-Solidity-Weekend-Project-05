@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { LOTTERY_CONTRACT_ADDRESS, LOTTERY_ABI, LOTTERY_TOKEN_ADDRESS, LOTTERY_TOKEN_ABI} from "../constants/contracts";
+import { sign } from 'crypto';
 
 export const Bet = () => {
     const [tokens, setTokens] = React.useState('');
@@ -25,12 +26,14 @@ export const Bet = () => {
 
     async function handleSubmit() {
         if(lotteryC && tokenC) {
-            const allowTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther(tokens));
-            const receiptAllow = await allowTx.wait();
-            console.log(`Allowance confirmed (${receiptAllow.transactionHash})\n`);
+            const approveTx = await tokenC.approve(LOTTERY_CONTRACT_ADDRESS, ethers.utils.parseEther(tokens));
+            const receiptApprove = await approveTx.wait();
+            console.log(`Approve confirmed (${receiptApprove.transactionHash})\n`);
+            // get the allowanmce to work
+            const allowanceTx = await tokenC.allowance(LOTTERY_CONTRACT_ADDRESS, LOTTERY_TOKEN_ADDRESS);
             const tx = await lotteryC.bet();
             const receipt = await tx.wait();
-            console.log(`Burn confirmed (${receipt.transactionHash})\n`);
+            console.log(`Bet confirmed (${receipt.transactionHash})\n`);
         }
     }
     if (isConnected) {
