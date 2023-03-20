@@ -20,13 +20,17 @@ export const BuyTokens = () => {
     })
     const { data, isLoading, isSuccess, write } = useContractWrite(config)
       
+    const purchaseHandler = () => {
+        if (parseInt(amount) > 0) write?.();
+        alert('Please enter an amount greater than 0')
+    }
     if (isConnected) {
         return (
             <Card sx={{ minWidth: 275 }}>
                 <CardContent>
                     <Typography component={'span'} variant={'body1'} align={'center'}>
                         <div>
-                            <button disabled={!write} onClick={() => write?.()}>
+                            <button disabled={!write} onClick={purchaseHandler}>
                                 Purchase Tokens
                             </button>
                             {isLoading && <div>Check Wallet</div>}
@@ -37,7 +41,7 @@ export const BuyTokens = () => {
                                 id="amount"
                                 onChange={(e) => setAmount(e.target.value)}
                                 placeholder="Amount of tokens to purchase."
-                                value={parseInt(amount) > 0 ? amount : "0"}
+                                value={amount}
                             />
                         </div>
                     </Typography>
